@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 2 - JavaScript Debounce Tutorial</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Project 2: JavaScript Debounce Tutorial</h1>
+        <img src="../images/code.jpg" alt="Coding Image" class="header-image">
+    </header>
+
+    <main>
+        <section>
+            <h2>Interactive Debounce Example</h2>
+            <p>This section demonstrates the JavaScript debounce technique, which limits the rate of function calls in response to user actions like typing in an input box.</p>
+
+            <!-- Input Field with Debounce -->
+            <div class="input-demo">
+                <label for="debounced-input">Type here to see debounce in action:</label>
+                <input type="text" id="debounced-input" placeholder="Start typing...">
+                <p id="output"></p>
+            </div>
+
+            <!-- Code Snippet Explanation -->
+            <h3>Code Explanation:</h3>
+            <pre><code>
+// Debounce function implementation
+function debounce(func, delay) {
+    let timer;
+    return function(...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => func.apply(this, args), delay);
+    };
+}
+
+// Applying debounce to input
+const inputField = document.getElementById('debounced-input');
+const output = document.getElementById('output');
+inputField.addEventListener('input', debounce((event) => {
+    output.textContent = "User typed: " + event.target.value;
+}, 500));
+            </code></pre>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Web Development Practice</p>
+    </footer>
+
+    <!-- Inline JavaScript for Debounce Functionality -->
+    <script>
+        function debounce(func, delay) {
+            let timer;
+            return function(...args) {
+                clearTimeout(timer);
+                timer = setTimeout(() => func.apply(this, args), delay);
+            };
+        }
+
+        const inputField = document.getElementById('debounced-input');
+        const output = document.getElementById('output');
+
+        inputField.addEventListener('input', debounce((event) => {
+            output.textContent = "User typed: " + event.target.value;
+        }, 500));
+    </script>
+</body>
+</html>
